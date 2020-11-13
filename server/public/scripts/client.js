@@ -27,7 +27,10 @@ function storePostDisplay() {
     $.ajax({
         method: 'GET',
         url: '/calculate'
-    }) .then (function(response) {$('#answers').append(response);
+    }) .then (function(response) {
+        $('#bigAnswer').empty();
+        $('#bigAnswer').append(response.answer);
+        $('#answers').append(response.expression);
     }) .catch (function (error) {
         console.log('Error', error);
         alert('Something Bad Happened, Try again Later');
