@@ -10,8 +10,9 @@ let stringMathPhrase = [];
 
 //GET route
 app.get('/calculate', (req, res) => {
+    let indexNumber = stringMathPhrase.length -1;
     console.log('getting calculation...');
-    res.send(stringMathPhrase);
+    res.send(stringMathPhrase[indexNumber]);
 });
 
 //POST route
@@ -21,6 +22,8 @@ app.post('/calculate', (req, res) => {
     stringMathPhrase.push(postStuff);
     res.sendStatus(200);
 })
+
+
 
 app.listen(PORT, () => {
   console.log ('Server is running on port', PORT)
