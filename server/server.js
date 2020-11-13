@@ -17,7 +17,15 @@ app.get('/calculate', (req, res) => {
     if (mathPhrase[i].operator == '\+'){
         answer = Number(mathPhrase[i].left) + Number(mathPhrase[i].right)
     }
-    //res.send(`<p>${answer}</p>`);
+    if (mathPhrase[i].operator == '\-'){
+        answer = Number(mathPhrase[i].left) - Number(mathPhrase[i].right)
+    }
+    if (mathPhrase[i].operator == '\*'){
+        answer = Number(mathPhrase[i].left) * Number(mathPhrase[i].right)
+    }
+    if (mathPhrase[i].operator == '\/'){
+        answer = Number(mathPhrase[i].left) / Number(mathPhrase[i].right)
+    }
     res.send({answer: `<p>${answer}</p>`, expression: `<p>${mathPhrase[i].left} ${mathPhrase[i].operator} ${mathPhrase[i].right} = ${answer}</p>`})
 });
 
