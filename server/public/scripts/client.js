@@ -17,28 +17,6 @@ function readyNow() {
     renderHistory();
 }
 
-/*
-function storePostDisplay() {
-    expression.left = $('#leftSide').val();
-    expression.right = $('#rightSide').val();
-    $.ajax({
-        method: 'POST',
-        url: '/calculate',
-        data: expression
-    })
-    $.ajax({
-        method: 'GET',
-        url: '/calculate'
-    }) .then (function(response) {
-        $('#bigAnswer').empty();
-        $('#bigAnswer').append(response.answer);
-        $('#answers').append(response.expression);
-    }) .catch (function (error) {
-        console.log('Error', error);
-        alert('Something Bad Happened, Try again Later');
-      })
-}
-*/
 
 //Posts to the server
 function storePost() {
@@ -61,7 +39,9 @@ function renderBigAnswer(){
     }) .then (function(response) {
         let i = response.length-1;
         $('#bigAnswer').empty();
-        $('#bigAnswer').append(response[i].answer);
+        $('#bigAnswer').css('font-size', 42);
+        $('#bigAnswer').css('font-weight', 'bold');
+        $('#bigAnswer').append(`<p>${response[i].answer}</p>`);
     }) .catch (function (error) {
         console.log('Error', error);
         alert('Something Bad Happened, Try again Later');
@@ -76,10 +56,11 @@ function renderHistory(){
         url: '/calculate'
     }) .then (function(response) {
         for(objects of response){
-            $('#history').append(`<li>${objects.left} ${objects.operator} ${objects.right} = ${objects.answer}`);
+            $('#history').append(`<li>${objects.left} ${objects.operator} ${objects.right} = ${objects.answer}</li>`);
         }
     }) .catch (function (error) {
         console.log('Error', error);
         alert('Something Bad Happened, Try again Later');
       })
 }
+

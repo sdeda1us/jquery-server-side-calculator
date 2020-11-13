@@ -21,7 +21,11 @@ app.get('/calculate', (req, res) => {
         }else if(objects.operator == '\*'){
             answer = Number(objects.left) * Number(objects.right)
         }else if (objects.operator == '\/'){
-            answer = Number(objects.left) / Number(objects.right)
+            if(objects.right == '0'){
+                answer = undefined;
+            }else {
+                answer = (Number(objects.left) / Number(objects.right)).toFixed(2);
+            }
         }
         historyArray.push({
             left: objects.left,
