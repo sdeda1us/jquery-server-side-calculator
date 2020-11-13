@@ -13,12 +13,13 @@
 
 #SERVER.JS 
 
-- set up app.get and app.post
+x set up app.get and app.post
+
 ##CLIENT.JS
 
-- 4 operator on.clicks
-- equals on.click
-- clear on.click
-- Get inputs 
-- POST them to the server
+x- 4 operator on.clicks
+x- equals on.click
+x- clear on.click
+x- Get inputs 
+x- POST them to the server
 

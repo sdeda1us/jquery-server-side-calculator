@@ -8,10 +8,10 @@ $(document).ready(readyNow);
 
 function readyNow() {
     //event handlers
-    $('#plus').on('click', function() {expression.operator = '\+'; console.log(expression)} );
-    $('#minus').on('click', function() {expression.operator = "\-"; console.log(expression)});
-    $('#times').on('click', function() {expression.operator = "\*"; console.log(expression)});
-    $('#divide').on('click', function() {expression.operator = "\/"; console.log(expression)});
+    $('#plus').on('click', function() {expression.operator = '\+';} );
+    $('#minus').on('click', function() {expression.operator = "\-";});
+    $('#times').on('click', function() {expression.operator = "\*";});
+    $('#divide').on('click', function() {expression.operator = "\/";});
     $('#equals').on('click', storeThenPost);
     $('#clear').on('click', function () {$('#leftSide').val('');$('#rightSide').val('');});
 }
@@ -19,5 +19,9 @@ function readyNow() {
 function storeThenPost() {
     expression.left = $('#leftSide').val();
     expression.right = $('#rightSide').val();
-    console.log(expression);
+    $.ajax({
+        method: 'POST',
+        url: '/calculate',
+        data: expression
+    })
 }
