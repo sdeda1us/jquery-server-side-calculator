@@ -6,20 +6,25 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('server/public'));
 
 
-let stringMathPhrase = [];
+let mathPhrase = [];
 
 //GET route
 app.get('/calculate', (req, res) => {
-    let indexNumber = stringMathPhrase.length -1;
+    let i = mathPhrase.length -1;
+    console.log(i);
     console.log('getting calculation...');
-    res.send(stringMathPhrase[indexNumber]);
+    let answer = 0;
+    if (mathPhrase[i].operator == '\+'){
+        answer = Number(mathPhrase[i].left) + Number(mathPhrase[i].right)
+    }
+    res.send(`<p>${answer}</p>`);
 });
 
 //POST route
 app.post('/calculate', (req, res) => {
     console.log('posting math pieces...');
     let postStuff = req.body;
-    stringMathPhrase.push(postStuff);
+    mathPhrase.push(postStuff);
     res.sendStatus(200);
 })
 
