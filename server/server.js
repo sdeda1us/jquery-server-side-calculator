@@ -10,23 +10,27 @@ let mathPhrase = [];
 
 //GET route
 app.get('/calculate', (req, res) => {
-    let i = mathPhrase.length -1;
-    console.log(i);
+    let historyArray = [];
     console.log('getting calculation...');
-    let answer = 0;
-    if (mathPhrase[i].operator == '\+'){
-        answer = Number(mathPhrase[i].left) + Number(mathPhrase[i].right)
+    for (objects of mathPhrase){
+        let answer = 0;
+        if (objects.operator == '\+'){
+            answer = Number(objects.left) + Number(objects.right)
+        }else if (objects.operator == '\-'){
+            answer = Number(objects.left) - Number(objects.right)
+        }else if(objects.operator == '\*'){
+            answer = Number(objects.left) * Number(objects.right)
+        }else if (objects.operator == '\/'){
+            answer = Number(objects.left) / Number(objects.right)
+        }
+        historyArray.push({
+            left: objects.left,
+            right: objects.right,
+            operator: objects.operator,
+            answer: answer
+        })
     }
-    if (mathPhrase[i].operator == '\-'){
-        answer = Number(mathPhrase[i].left) - Number(mathPhrase[i].right)
-    }
-    if (mathPhrase[i].operator == '\*'){
-        answer = Number(mathPhrase[i].left) * Number(mathPhrase[i].right)
-    }
-    if (mathPhrase[i].operator == '\/'){
-        answer = Number(mathPhrase[i].left) / Number(mathPhrase[i].right)
-    }
-    res.send({answer: `<p>${answer}</p>`, expression: `<p>${mathPhrase[i].left} ${mathPhrase[i].operator} ${mathPhrase[i].right} = ${answer}</p>`})
+    res.send(historyArray);
 });
 
 //POST route
