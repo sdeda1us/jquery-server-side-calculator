@@ -7,21 +7,37 @@ let expression = {
 $(document).ready(readyNow);
 
 function readyNow() {
-    //event handlers
-    $('#plus').on('click', function() {expression.operator = '\+';} );
-    $('#minus').on('click', function() {expression.operator = "\-";});
-    $('#times').on('click', function() {expression.operator = "\*";});
-    $('#divide').on('click', function() {expression.operator = "\/";});
-    $('#equals').on('click', storePost);
-    $('#clear').on('click', function () {$('#leftSide').val('');$('#rightSide').val('');});
+    //event click handlers for the number keys
+    $('.one').on('click', function() {$('#screen').val($('#screen').val()+ '1')});
+    $('.two').on('click', function() {$('#screen').val($('#screen').val()+ '2')});
+    $('.three').on('click', function() {$('#screen').val($('#screen').val()+ '3')});
+    $('.four').on('click', function() {$('#screen').val($('#screen').val()+ '4')});
+    $('.five').on('click', function() {$('#screen').val($('#screen').val()+ '5')});
+    $('.six').on('click', function() {$('#screen').val($('#screen').val()+ '6')});
+    $('.seven').on('click', function() {$('#screen').val($('#screen').val()+ '7')});
+    $('.eight').on('click', function() {$('#screen').val($('#screen').val()+ '8')});
+    $('.nine').on('click', function() {$('#screen').val($('#screen').val()+ '9')});
+    $('.zero').on('click', function() {$('#screen').val($('#screen').val()+ '0')});
+
+    //hover handler
+    $('.button').hover(function(){$(this).toggleClass('hover')}, function(){$(this).toggleClass('hover')});
+
+    //event handlers for the operators
+    $('.plus').on('click', function() {expression.operator = '\+'; expression.left = $('#screen').val(); $('#screen').val('')});
+    $('.minus').on('click', function() {expression.operator = "\-"; expression.left = $('#screen').val(); $('#screen').val('')});
+    $('.times').on('click', function() {expression.operator = "\*"; expression.left = $('#screen').val(); $('#screen').val('')});
+    $('.divide').on('click', function() {expression.operator = "\/"; expression.left = $('#screen').val(); $('#screen').val('')});
+
+    //event handlers for equals, decimal point, and clear keys
+    $('.equals').on('click', storePost);
+    $('.decimalPoint').on('click', function() {$('#screen').val($('#screen').val()+ '.')}); 
+    $('.clear').on('click', function() {$('#screen').val('')});
     renderHistory();
 }
 
-
 //Posts to the server
 function storePost() {
-    expression.left = $('#leftSide').val();
-    expression.right = $('#rightSide').val();
+    expression.right = $('#screen').val();
     $.ajax({
         method: 'POST',
         url: '/calculate',
@@ -55,6 +71,7 @@ function renderHistory(){
         method: 'GET',
         url: '/calculate'
     }) .then (function(response) {
+        $('#history').empty();
         for(objects of response){
             $('#history').append(`<li>${objects.left} ${objects.operator} ${objects.right} = ${objects.answer}</li>`);
         }

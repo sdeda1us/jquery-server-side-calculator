@@ -7,20 +7,40 @@
   <title>Server Side Calculator</title>
   <script src="vendors/jquery.min.js"></script>
   <script src="scripts/client.js"></script>
-  <link rel="stylesheet" href="styles/style.css">
+  <!--<link rel="stylesheet" href="styles/bootstrap-grid.min.css"/> -->
+  <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body>
     <h1>SERVER SIDE CALCULATOR</h1>
-    <main>
-      <section id="buttons">
-        <input id="leftSide">
-        <button id="plus">+</button>
-        <button id="minus">-</button>
-        <button id="times">*</button>
-        <button id="divide">/</button>
-        <input id="rightSide">
-        <button id="equals">=</button>
-        <button id="clear">C</button>    
+    <main class="calcBackground">
+        <input id ="screen"/>
+        <button class="button clear">C</button>
+        <table class = "tableDef">
+            <tr>
+                <td><button class="btn btn-primary button seven">7</button></td>
+                <td><button class="button eight">8</button></td>
+                <td><button class="button nine">9</button></td>
+                <td><button class="button plus">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="button four">4</button></td>
+                <td><button class="button five">5</button></td>
+                <td><button class="button six">6</button></td>
+                <td><button class="button minus">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="button one">1</button></td>
+                <td><button class="button two">2</button></td>
+                <td><button class="button three">3</button></td>
+                <td><button class="button times">*</button></td>
+            </tr>
+            <tr>
+                <td><button class="button zero">0</button></td>
+                <td><button class="button decimalPoint">.</button></td>
+                <td><button class="button equals">=</button></td>
+                <td><button class="button divide">/</button></td>
+            </tr>
+        </table>
       </section>
       <section id="bigAnswer">
         <!--jQuery will post stuff here-->

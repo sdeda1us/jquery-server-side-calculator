@@ -1,8 +1,24 @@
 body {
-    background-color: aliceblue;
+    background-color: white;
 }
 
+.hover {
+    background-color: darkgray;
+}
 
-.makeBig {
-    font-size: 42;
+.button {
+    height: 100px;
+    width: 150px;
+    background-color: orange;
+}
+
+#screen {
+    width: 456px;
+    height: 50px;
+}
+
+.calcBackground{
+    width: 622px;
+    margin: 20px;
+    background-color: darkgrey;
 }
