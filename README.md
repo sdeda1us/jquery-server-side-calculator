@@ -13,7 +13,7 @@ _Duration: Weekend 12 Hours_
 
 This application simulates some of the functions of the standard arithmetic calculator. The user can input numbers via the touchpad and the application returns the answer in large print and then logs the history of all operations calculator has performed since the server has been turned on. 
 
-
+To see the fully functional site, please visit: [the herokuapp deployment](https://fierce-headland-26435.herokuapp.com/)
 
 ## Screen shots
 

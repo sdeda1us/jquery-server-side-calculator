@@ -1,8 +1,9 @@
+//creates an empty object to post to server
 let expression = {
-    left: null,
-    right: null,
-    operator: null
+    statement: null,
+    answer: null
 }
+
 
 $(document).ready(readyNow);
 
@@ -23,10 +24,10 @@ function readyNow() {
     $('.button').hover(function(){$(this).toggleClass('hover')}, function(){$(this).toggleClass('hover')});
 
     //event handlers for the operators
-    $('.plus').on('click', function() {expression.operator = '\+'; expression.left = $('#screen').val(); $('#screen').val('')});
-    $('.minus').on('click', function() {expression.operator = "\-"; expression.left = $('#screen').val(); $('#screen').val('')});
-    $('.times').on('click', function() {expression.operator = "\*"; expression.left = $('#screen').val(); $('#screen').val('')});
-    $('.divide').on('click', function() {expression.operator = "\/"; expression.left = $('#screen').val(); $('#screen').val('')});
+    $('.plus').on('click', function() {$('#screen').val($('#screen').val()+ '\+');});
+    $('.minus').on('click', function() {$('#screen').val($('#screen').val()+ '\-');});
+    $('.times').on('click', function() {$('#screen').val($('#screen').val()+ '\*');});
+    $('.divide').on('click', function() {$('#screen').val($('#screen').val()+ '\/');});
 
     //event handlers for equals, decimal point, and clear keys
     $('.equals').on('click', storePost);
@@ -37,7 +38,8 @@ function readyNow() {
 
 //Posts to the server
 function storePost() {
-    expression.right = $('#screen').val();
+    //creates an empty string to parse the right side of the operation
+    expression.statement = $('#screen').val();
     $.ajax({
         method: 'POST',
         url: '/calculate',
@@ -72,8 +74,8 @@ function renderHistory(){
         url: '/calculate'
     }) .then (function(response) {
         $('.history').empty();
-        for(objects of response){
-            $('.history').append(`<li>${objects.left} ${objects.operator} ${objects.right} = ${objects.answer}</li>`);
+        for(object of response){
+            $('.history').append(`<li>${object.statement} = ${object.answer}</li>`);
         }
     }) .catch (function (error) {
         console.log('Error', error);

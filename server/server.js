@@ -10,31 +10,28 @@ let mathPhrase = [];
 
 //GET route
 app.get('/calculate', (req, res) => {
-    let historyArray = [];
     console.log('getting calculation...');
-    for (objects of mathPhrase){
+    for (object of mathPhrase){
         let answer = 0;
-        if (objects.operator == '\+'){
-            answer = Number(objects.left) + Number(objects.right)
-        }else if (objects.operator == '\-'){
-            answer = Number(objects.left) - Number(objects.right)
-        }else if(objects.operator == '\*'){
-            answer = Number(objects.left) * Number(objects.right)
-        }else if (objects.operator == '\/'){
-            if(objects.right == '0'){
+        if (object.statement.includes('\+')){
+            let mathParts = object.statement.split('+');
+            object.answer = Number(mathParts[0]) + Number(mathParts[1]);
+        }else if (object.statement.includes('\-')){
+            let mathParts = object.statement.split('-');
+            object.answer = Number(mathParts[0]) - Number(mathParts[1]);
+        }else if(object.statement.includes('\*')){
+            let mathParts = object.statement.split('*');
+            object.answer = Number(mathParts[0]) * Number(mathParts[1]);
+        }else if (object.statement.includes('\/')){
+            let mathParts = object.statement.split('/');
+            if(mathParts[1] == '0'){
                 answer = undefined;
-            }else {
-                answer = (Number(objects.left) / Number(objects.right)).toFixed(2);
+            }else{
+                object.answer = Number(mathParts[0]) / Number(mathParts[1]);
             }
         }
-        historyArray.push({
-            left: objects.left,
-            right: objects.right,
-            operator: objects.operator,
-            answer: answer
-        })
     }
-    res.send(historyArray);
+    res.send(mathPhrase);
 });
 
 //POST route
