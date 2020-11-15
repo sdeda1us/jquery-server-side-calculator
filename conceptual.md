@@ -30,12 +30,7 @@ x- edit get route to take elements of the expression
 x- check operator to see which operator is in use
 x- calculate the answer
 x- return template literal object with the answer to post and the expression to add to the history
-- control decimal places in output return
-- check for divide by 0 and return and error
+x- check for divide by 0 and return and undefined
 
 ##STYLE.CSS
-- Style the answer so that it is big and maybe bold
-- create a style class so that the button is a darker gray when it is selected
-
-##CLIENT.JS
-- edit click handlers to switch colors when one is depressed
+x- Style the answer so that it is big and maybe bold
