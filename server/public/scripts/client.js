@@ -20,9 +20,6 @@ function readyNow() {
     $('.nine').on('click', function() {$('#screen').val($('#screen').val()+ '9')});
     $('.zero').on('click', function() {$('#screen').val($('#screen').val()+ '0')});
 
-    //hover handler
-    $('.button').hover(function(){$(this).toggleClass('hover')}, function(){$(this).toggleClass('hover')});
-
     //event handlers for the operators
     $('.plus').on('click', function() {$('#screen').val($('#screen').val()+ '\+');});
     $('.minus').on('click', function() {$('#screen').val($('#screen').val()+ '\-');});
@@ -38,13 +35,13 @@ function readyNow() {
 
 //Posts to the server
 function storePost() {
-    //creates an empty string to parse the right side of the operation
-    expression.statement = $('#screen').val();
+    expression.statement = $('#screen').val();  //creates an empty string to parse the right side of the operation
     $.ajax({
         method: 'POST',
         url: '/calculate',
         data: expression
     })
+    //Call functions to post to the DOM
     renderBigAnswer();
     renderHistory();
 }
@@ -55,11 +52,14 @@ function renderBigAnswer(){
         method: 'GET',
         url: '/calculate'
     }) .then (function(response) {
-        let i = response.length-1;
+        let i = response.length-1; //index location for answer to last calculation
+        //append large font answer to DOM
         $('.bigAnswer').empty();
         $('.bigAnswer').css('font-size', 42);
         $('.bigAnswer').css('font-weight', 'bold');
         $('.bigAnswer').append(`<p>${response[i].answer}</p>`);
+        //append answer to screen in the calculator
+        $('#screen').val(`${response[i].answer}`)
     }) .catch (function (error) {
         console.log('Error', error);
         alert('Something Bad Happened, Try again Later');
