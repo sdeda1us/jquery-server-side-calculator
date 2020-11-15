@@ -52,7 +52,7 @@ Special thanks to my learning group for this week from my Vatti Cohort:
 - [Josie Fredericksen](https://github.com//freder48)
 - [Yer Thao](https://github.com/yyerthao)
 
-Extra special thanks to Iris Maloney, from the second grade at Heilicher Day School in Saint Louis Park, Minnesota, for her QA testing help and her consulting work on the color schemes for this applicaiton. 
+Extra special thanks to *Iris Maloney*, from the second grade at Heilicher Day School in Saint Louis Park, Minnesota, for her QA testing help and her consulting work on the color schemes for this applicaiton. 
 
 ## Support
 If you have suggestions or issues, please email me at [steven.maloney@gmail.com](mailto:steven.maloney@gmail.com)
