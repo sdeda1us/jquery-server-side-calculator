@@ -1,4 +1,4 @@
-![MIT LICENSE](https://img.shields.io/github/license/sdeda1us/jquery-server-side-calculator.svg?style=flat-square)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![REPO SIZE](https://img.shields.io/github/repo-size/sdeda1us/jquery-server-side-calculator.svg?style=flat-square)
 ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/sdeda1us/jquery-server-side-calculator.svg?style=flat-square)
 ![FORKS](https://img.shields.io/github/forks/sdeda1us/jquery-server-side-calculator.svg?style=social)
