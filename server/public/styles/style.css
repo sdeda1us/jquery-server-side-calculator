@@ -1,3 +1,22 @@
+
+@font-face {
+    font-family: 'digital-7regular';
+    src: url('fonts/digital-7/digital-7-webfont.woff2') format('woff2'),
+         url('fonts/digital-7/digital-7-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Orbitron';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/orbitron/v16/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyGy6BoWg1fDAlp7lk.woff) format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
 body {
     background-color: white;
 }
@@ -6,19 +25,45 @@ body {
     background-color: darkgray;
 }
 
+.tableDef{
+    margin-top: 5px;
+}
+
 .button {
     height: 100px;
     width: 150px;
-    background-color: orange;
+    background-color: pink;
+    color: teal;
+    font-size: 20px;
 }
 
 #screen {
-    width: 456px;
+    width: 448px;
     height: 50px;
+    font-family: 'digital-7regular';
+    font-size: 30px;
+    margin-left: 5px;
 }
 
 .calcBackground{
     width: 622px;
     margin: 20px;
-    background-color: darkgrey;
+    background-color: powderblue;
+   
+}
+
+.clear{
+    margin-top: 5px;
+}
+
+.bigAnswer {
+    font-family: 'Orbitron';
+    margin: 10px;
+    background-color: white;
+}
+
+.history {
+    font-family: 'Orbitron';
+    margin: 10px;
+    background-color: orange;
 }

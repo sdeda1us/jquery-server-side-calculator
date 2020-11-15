@@ -54,10 +54,10 @@ function renderBigAnswer(){
         url: '/calculate'
     }) .then (function(response) {
         let i = response.length-1;
-        $('#bigAnswer').empty();
-        $('#bigAnswer').css('font-size', 42);
-        $('#bigAnswer').css('font-weight', 'bold');
-        $('#bigAnswer').append(`<p>${response[i].answer}</p>`);
+        $('.bigAnswer').empty();
+        $('.bigAnswer').css('font-size', 42);
+        $('.bigAnswer').css('font-weight', 'bold');
+        $('.bigAnswer').append(`<p>${response[i].answer}</p>`);
     }) .catch (function (error) {
         console.log('Error', error);
         alert('Something Bad Happened, Try again Later');
@@ -71,9 +71,9 @@ function renderHistory(){
         method: 'GET',
         url: '/calculate'
     }) .then (function(response) {
-        $('#history').empty();
+        $('.history').empty();
         for(objects of response){
-            $('#history').append(`<li>${objects.left} ${objects.operator} ${objects.right} = ${objects.answer}</li>`);
+            $('.history').append(`<li>${objects.left} ${objects.operator} ${objects.right} = ${objects.answer}</li>`);
         }
     }) .catch (function (error) {
         console.log('Error', error);
